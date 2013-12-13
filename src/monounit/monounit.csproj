@@ -34,6 +34,13 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCase.cs" />
+    <Compile Include="Runner\Runner.cs" />
+    <Compile Include="Suite.cs" />
+    <Compile Include="Spec.cs" />
+    <Compile Include="Expectation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Runner\" />
+  </ItemGroup>
 </Project>

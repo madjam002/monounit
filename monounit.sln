@@ -52,5 +52,9 @@ Global
 		$0.StandardHeader = $4
 		$4.Text = 
 		$4.IncludeInNewFiles = True
+		$0.TextStylePolicy = $5
+		$5.inheritsSet = VisualStudio
+		$5.inheritsScope = text/plain
+		$5.scope = text/plain
 	EndGlobalSection
 EndGlobal
