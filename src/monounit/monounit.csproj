@@ -38,9 +38,12 @@
     <Compile Include="Suite.cs" />
     <Compile Include="Spec.cs" />
     <Compile Include="Expectation.cs" />
+    <Compile Include="Matcher\AbstractMatcher.cs" />
+    <Compile Include="Matcher\EqualityMatcher.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Runner\" />
+    <Folder Include="Matcher\" />
   </ItemGroup>
 </Project>

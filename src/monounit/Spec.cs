@@ -19,6 +19,21 @@ namespace MonoUnit
         {
             closure();
         }
+
+        public string Title
+        {
+            get { return title; }
+        }
+
+        public Action Closure
+        {
+            get { return closure; }
+        }
+
+        public Suite Suite
+        {
+            get { return suite; }
+        }
     }
 }
 

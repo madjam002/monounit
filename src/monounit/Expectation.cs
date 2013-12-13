@@ -22,7 +22,21 @@ namespace MonoUnit
 
         public Expectation toEqual(object expected)
         {
+            Test(new EqualityMatcher(expected));
+
             return this;
+        }
+
+        private void Test(AbstractMatcher matcher)
+        {
+            bool match = matcher.Match(actual);
+
+            if (!(inverse ^ match))
+            {
+                string failureMessage = matcher.GetFailureMessage(inverse);
+
+                throw new Exception(failureMessage);
+            }
         }
     }
 }
