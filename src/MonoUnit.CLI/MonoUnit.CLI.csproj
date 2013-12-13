@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{3BF604AC-4A7D-4F6C-BD4E-D559BFFD8A52}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MonoUnit.Console</RootNamespace>
+    <RootNamespace>MonoUnit.CLI</RootNamespace>
     <AssemblyName>MonoUnit</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

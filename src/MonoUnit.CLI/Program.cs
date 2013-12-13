@@ -1,6 +1,6 @@
 using System;
 
-namespace MonoUnit.Console
+namespace MonoUnit.CLI
 {
     class MainClass
     {

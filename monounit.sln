@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoUnit", "src\MonoUnit\MonoUnit.csproj", "{562285F0-6ED9-42E6-84F6-C108D48E3C91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoUnit.Console", "src\MonoUnit.Console\MonoUnit.Console.csproj", "{3BF604AC-4A7D-4F6C-BD4E-D559BFFD8A52}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoUnit.CLI", "src\MonoUnit.CLI\MonoUnit.CLI.csproj", "{3BF604AC-4A7D-4F6C-BD4E-D559BFFD8A52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,7 +21,7 @@ Global
 		{562285F0-6ED9-42E6-84F6-C108D48E3C91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = src\MonoUnit.Console\MonoUnit.Console.csproj
+		StartupItem = src\MonoUnit.CLI\MonoUnit.CLI.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None
