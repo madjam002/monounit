@@ -8,7 +8,7 @@
     <ProjectGuid>{562285F0-6ED9-42E6-84F6-C108D48E3C91}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>MonoUnit</RootNamespace>
-    <AssemblyName>monounit</AssemblyName>
+    <AssemblyName>MonoUnit</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
