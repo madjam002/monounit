@@ -1,4 +1,4 @@
-MonoUnit
-========
+## MonoUnit
+#### This project is a work in progress and hasn't been finished yet
 
-[WIP] BDD test framework for .NET/Mono, inspired by Jasmine (Javascript Test Framework)
+BDD test framework for .NET/Mono, inspired by Jasmine (Javascript Test Framework)
