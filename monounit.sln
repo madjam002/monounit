@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoUnit", "src\MonoUnit\Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoUnit.CLI", "src\MonoUnit.CLI\MonoUnit.CLI.csproj", "{3BF604AC-4A7D-4F6C-BD4E-D559BFFD8A52}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5A792C02-F319-431E-828D-A283EF1CA7F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoUnit.Test", "tests\MonoUnit.Test\MonoUnit.Test.csproj", "{B274B84D-D5B3-4704-BEF1-C66F36C4DB43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,13 @@ Global
 		{562285F0-6ED9-42E6-84F6-C108D48E3C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{562285F0-6ED9-42E6-84F6-C108D48E3C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{562285F0-6ED9-42E6-84F6-C108D48E3C91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B274B84D-D5B3-4704-BEF1-C66F36C4DB43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B274B84D-D5B3-4704-BEF1-C66F36C4DB43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B274B84D-D5B3-4704-BEF1-C66F36C4DB43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B274B84D-D5B3-4704-BEF1-C66F36C4DB43}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B274B84D-D5B3-4704-BEF1-C66F36C4DB43} = {5A792C02-F319-431E-828D-A283EF1CA7F0}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = src\MonoUnit.CLI\MonoUnit.CLI.csproj
