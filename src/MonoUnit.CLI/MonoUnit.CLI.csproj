@@ -33,9 +33,6 @@
     <Reference Include="CommandLine">
       <HintPath>..\..\packages\CommandLineParser.1.9.71\lib\net40\CommandLine.dll</HintPath>
     </Reference>
-    <Reference Include="MonoUnit">
-      <HintPath>..\..\bin\MonoUnit.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -46,5 +43,11 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MonoUnit\MonoUnit.csproj">
+      <Project>{562285F0-6ED9-42E6-84F6-C108D48E3C91}</Project>
+      <Name>MonoUnit</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

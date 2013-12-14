@@ -34,7 +34,7 @@ namespace MonoUnit
             currentSuite = previous;
         }
 
-        public void it(string title, Action closure)
+        public void it(string title, Action closure = null)
         {
             Spec spec = new Spec(title, closure, currentSuite);
             currentSuite.AddSpec(spec);

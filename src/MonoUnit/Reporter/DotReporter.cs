@@ -30,7 +30,23 @@ namespace MonoUnit
 
             lineLength++;
 
-            Console.Write('.');
+            switch (spec.Status)
+            {
+                case SpecStatus.FAILED:
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.Write('F');
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    break;
+                case SpecStatus.INCOMPLETE:
+                    Console.BackgroundColor = ConsoleColor.Blue;
+                    Console.Write('I');
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    break;
+                default:
+                case SpecStatus.PASSED:
+                    Console.Write('.');
+                    break;
+            }
         }
 
         public override void AfterRun()

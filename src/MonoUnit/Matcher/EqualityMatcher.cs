@@ -10,7 +10,7 @@ namespace MonoUnit
         {
             this.actual = actual;
 
-            return actual == expected;
+            return object.Equals(actual, expected);
         }
 
         public override string GetFailureMessage(bool inverse)

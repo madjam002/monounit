@@ -31,11 +31,11 @@ namespace MonoUnit
         {
             bool match = matcher.Match(actual);
 
-            if (!(inverse ^ match))
+            if (!match)
             {
                 string failureMessage = matcher.GetFailureMessage(inverse);
 
-                throw new Exception(failureMessage);
+                throw new ExpectationException(failureMessage);
             }
         }
     }
