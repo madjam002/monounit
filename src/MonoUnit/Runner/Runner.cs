@@ -48,7 +48,7 @@ namespace MonoUnit
             reporter.BeforeSuite(suite);
 
             // Run specs inside suite
-            RunSpecs(suite.GetSpecs());
+            RunSpecs(suite);
 
             // Run nested suites
             Suite[] suites = suite.GetSuites();
@@ -60,15 +60,33 @@ namespace MonoUnit
             reporter.AfterSuite(suite);
         }
 
-        public void RunSpecs(Spec[] specs)
+        public void RunSpecs(Suite suite)
         {
+            Spec[] specs = suite.GetSpecs();
+
             foreach (Spec spec in specs)
             {
                 reporter.BeforeSpec(spec);
+                RunSuiteHooks(suite, "beforeEach");
 
                 spec.Run();
 
+                RunSuiteHooks(suite, "afterEach");
                 reporter.AfterSpec(spec);
+            }
+        }
+
+        public void RunSuiteHooks(Suite suite, string name)
+        {
+            if (suite.Parent != null)
+            {
+                RunSuiteHooks(suite.Parent, name);
+            }
+
+            Action closure = suite.GetHook(name);
+            if (closure != null)
+            {
+                closure();
             }
         }
     }

@@ -40,6 +40,16 @@ namespace MonoUnit
             currentSuite.AddSpec(spec);
         }
 
+        public void beforeEach(Action closure)
+        {
+            currentSuite.SetHook("beforeEach", closure);
+        }
+
+        public void afterEach(Action closure)
+        {
+            currentSuite.SetHook("afterEach", closure);
+        }
+
         public Expectation expect(object actual)
         {
             return new Expectation(actual);
