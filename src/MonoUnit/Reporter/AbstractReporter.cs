@@ -4,9 +4,9 @@ namespace MonoUnit
 {
     public abstract class AbstractReporter
     {
-        int specCount;
-        int failedSpecs;
-        int incompleteSpecs;
+        protected int specCount;
+        protected int failedSpecs;
+        protected int incompleteSpecs;
 
         public AbstractReporter()
         {
@@ -35,6 +35,15 @@ namespace MonoUnit
 
         public virtual void AfterSpec(Spec spec)
         {
+            switch (spec.Status)
+            {
+                case SpecStatus.FAILED:
+                    failedSpecs++;
+                    break;
+                case SpecStatus.INCOMPLETE:
+                    incompleteSpecs++;
+                    break;
+            }
         }
     }
 }

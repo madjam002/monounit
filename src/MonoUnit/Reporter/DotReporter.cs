@@ -52,6 +52,27 @@ namespace MonoUnit
         public override void AfterRun()
         {
             Console.WriteLine();
+            Console.WriteLine();
+
+            if (failedSpecs > 0)
+            {
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+            }
+            else if (incompleteSpecs > 0)
+            {
+                Console.BackgroundColor = ConsoleColor.Blue;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+
+            Console.Write("{0} tests, {1} failures, {2} incomplete", specCount, failedSpecs, incompleteSpecs);
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine();
+            Console.WriteLine();
         }
     }
 }
