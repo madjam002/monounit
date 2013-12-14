@@ -49,10 +49,12 @@ namespace MonoUnit
             }
         }
 
-        public override void AfterRun()
+        public override void AfterRun(long timeTaken)
         {
             Console.WriteLine();
             Console.WriteLine();
+
+            Console.WriteLine("Time: {0} ms", timeTaken);
 
             if (failedSpecs > 0)
             {

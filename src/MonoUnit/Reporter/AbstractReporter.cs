@@ -16,7 +16,7 @@ namespace MonoUnit
         {
         }
 
-        public virtual void AfterRun()
+        public virtual void AfterRun(long timeTaken)
         {
         }
 

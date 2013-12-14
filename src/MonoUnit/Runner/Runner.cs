@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace MonoUnit
 {
@@ -8,10 +9,14 @@ namespace MonoUnit
         List<TestCase> testCases;
         AbstractReporter reporter;
 
+        Stopwatch timer;
+
         public Runner(AbstractReporter reporter)
         {
             this.testCases = new List<TestCase>();
             this.reporter = reporter;
+
+            this.timer = new Stopwatch();
         }
 
         public void AddTestCase(TestCase testCase)
@@ -22,6 +27,8 @@ namespace MonoUnit
         public void Run()
         {
             reporter.BeforeRun();
+            timer.Reset();
+            timer.Start();
 
             TestCase[] testCases = this.testCases.ToArray();
 
@@ -30,7 +37,8 @@ namespace MonoUnit
                 RunTestCase(testCase);
             }
 
-            reporter.AfterRun();
+            timer.Stop();
+            reporter.AfterRun(timer.ElapsedMilliseconds);
         }
 
         public void RunTestCase(TestCase testCase)
@@ -88,6 +96,11 @@ namespace MonoUnit
             {
                 closure();
             }
+        }
+
+        public Stopwatch Timer
+        {
+            get { return timer; }
         }
     }
 }
