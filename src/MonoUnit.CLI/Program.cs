@@ -6,7 +6,12 @@ namespace MonoUnit.CLI
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var options = new Options();
+            if (CommandLine.Parser.Default.ParseArguments(args, options))
+            {
+
+            }
         }
     }
 }
+
