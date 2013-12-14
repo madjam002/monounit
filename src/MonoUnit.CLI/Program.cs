@@ -9,7 +9,14 @@ namespace MonoUnit.CLI
             var options = new Options();
             if (CommandLine.Parser.Default.ParseArguments(args, options))
             {
-                Console.WriteLine("Running");
+                Console.WriteLine("Running Tests...");
+
+                DotReporter reporter = new DotReporter();
+                Test test = new Test();
+
+                Runner runner = new Runner(reporter);
+                runner.AddTestCase(test);
+                runner.Run();
             }
         }
     }

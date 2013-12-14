@@ -41,6 +41,7 @@
     <Compile Include="Matcher\AbstractMatcher.cs" />
     <Compile Include="Matcher\EqualityMatcher.cs" />
     <Compile Include="Reporter\AbstractReporter.cs" />
+    <Compile Include="Reporter\DotReporter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

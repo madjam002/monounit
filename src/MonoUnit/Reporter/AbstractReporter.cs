@@ -30,6 +30,7 @@ namespace MonoUnit
 
         public virtual void BeforeSpec(Spec spec)
         {
+            specCount++;
         }
 
         public virtual void AfterSpec(Spec spec)
