@@ -9,7 +9,7 @@ namespace MonoUnit.CLI
             var options = new Options();
             if (CommandLine.Parser.Default.ParseArguments(args, options))
             {
-
+                Console.WriteLine("Running");
             }
         }
     }

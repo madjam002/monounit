@@ -40,10 +40,12 @@
     <Compile Include="Expectation.cs" />
     <Compile Include="Matcher\AbstractMatcher.cs" />
     <Compile Include="Matcher\EqualityMatcher.cs" />
+    <Compile Include="Reporter\AbstractReporter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Runner\" />
     <Folder Include="Matcher\" />
+    <Folder Include="Reporter\" />
   </ItemGroup>
 </Project>
