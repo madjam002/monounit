@@ -9,15 +9,29 @@ namespace MonoUnit.CLI
             var options = new Options();
             if (CommandLine.Parser.Default.ParseArguments(args, options))
             {
-                Console.WriteLine("Running Tests...");
-
-                DotReporter reporter = new DotReporter();
-                Test test = new Test();
+                AbstractReporter reporter = CreateReporter(options.Reporter);
 
                 Runner runner = new Runner(reporter);
-                runner.AddTestCase(test);
+                AssemblyLoader assemblyLoader = new AssemblyLoader(runner);
+
+                foreach (string assemblyPath in options.Inputs)
+                {
+                    assemblyLoader.Load(assemblyPath);
+                }
+
                 runner.Run();
             }
+        }
+
+        static AbstractReporter CreateReporter(string name)
+        {
+            switch (name)
+            {
+                case "dot":
+                    return new DotReporter();
+            }
+
+            return null;
         }
     }
 }
