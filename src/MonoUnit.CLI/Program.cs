@@ -4,23 +4,56 @@ namespace MonoUnit.CLI
 {
     class MainClass
     {
+        static bool testsRunning = false;
+
         public static void Main(string[] args)
         {
             var options = new Options();
             if (CommandLine.Parser.Default.ParseArguments(args, options))
             {
-                AbstractReporter reporter = CreateReporter(options.Reporter);
-
-                Runner runner = new Runner(reporter);
-                AssemblyLoader assemblyLoader = new AssemblyLoader(runner);
-
-                foreach (string assemblyPath in options.Inputs)
+                if (options.Watch)
                 {
-                    assemblyLoader.Load(assemblyPath);
+                    Watcher watcher = new Watcher();
+                    foreach (string path in options.Inputs)
+                    {
+                        watcher.Watch(path);
+                    }
+
+                    watcher.Changed += () => {
+                        RunTests(options.Inputs, options.Reporter);
+                    };
                 }
 
-                runner.Run();
+                RunTests(options.Inputs, options.Reporter);
+
+                if (options.Watch)
+                {
+                    while (true)
+                        ;
+                }
             }
+        }
+
+        static void RunTests(string[] inputs, string reporterName)
+        {
+            if (testsRunning)
+                return;
+
+            testsRunning = true;
+
+            AbstractReporter reporter = CreateReporter(reporterName);
+
+            Runner runner = new Runner(reporter);
+            AssemblyLoader loader = new AssemblyLoader(runner);
+
+            foreach (string assemblyPath in inputs)
+            {
+                loader.Load(assemblyPath);
+            }
+
+            runner.Run();
+
+            testsRunning = false;
         }
 
         static AbstractReporter CreateReporter(string name)
