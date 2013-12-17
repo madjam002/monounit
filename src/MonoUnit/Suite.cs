@@ -64,7 +64,17 @@ namespace MonoUnit
 
         public string Title
         {
-            get { return title; }
+            get
+            {
+                if (parent != null)
+                {
+                    return parent.Title + ' ' + title;
+                }
+                else
+                {
+                    return title;
+                }
+            }
         }
 
         public Action Closure

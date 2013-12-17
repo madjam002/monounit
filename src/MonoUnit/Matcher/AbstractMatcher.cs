@@ -15,6 +15,11 @@ namespace MonoUnit
         public abstract bool Match(object actual);
 
         public abstract string GetFailureMessage(bool inverse);
+
+        public virtual bool ShowStackTrace
+        {
+            get { return true; }
+        }
     }
 }
 

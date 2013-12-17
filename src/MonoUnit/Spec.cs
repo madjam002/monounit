@@ -10,6 +10,7 @@ namespace MonoUnit
 
         SpecStatus status;
         Exception exception;
+        bool showStackTrace = false;
 
         public Spec(string title, Action closure, Suite suite)
         {
@@ -38,6 +39,7 @@ namespace MonoUnit
             catch (ExpectationException ex)
             {
                 exception = ex;
+                showStackTrace = ex.ShowStackTrace;
                 this.status = SpecStatus.FAILED;
             }
             catch (Exception ex)
@@ -49,7 +51,7 @@ namespace MonoUnit
 
         public string Title
         {
-            get { return title; }
+            get { return suite.Title + ' ' + title; }
         }
 
         public Action Closure
@@ -70,6 +72,12 @@ namespace MonoUnit
         public Exception Exception
         {
             get { return exception; }
+        }
+
+        public bool ShowStackTrace
+        {
+            get { return showStackTrace; }
+            set { showStackTrace = value; }
         }
     }
 }

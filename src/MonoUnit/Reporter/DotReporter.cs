@@ -56,11 +56,11 @@ namespace MonoUnit
 
             Console.WriteLine("Time: {0} ms", timeTaken);
 
-            if (failedSpecs > 0)
+            if (failedSpecs.Count > 0)
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
             }
-            else if (incompleteSpecs > 0)
+            else if (incompleteSpecs.Count > 0)
             {
                 Console.BackgroundColor = ConsoleColor.Blue;
             }
@@ -69,11 +69,14 @@ namespace MonoUnit
                 Console.ForegroundColor = ConsoleColor.Green;
             }
 
-            Console.Write("{0} tests, {1} failures, {2} incomplete", specCount, failedSpecs, incompleteSpecs);
+            Console.Write("{0} tests, {1} failures, {2} incomplete", specCount, failedSpecs.Count, incompleteSpecs.Count);
 
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
+
+            DisplayReport();
+
             Console.WriteLine();
         }
     }

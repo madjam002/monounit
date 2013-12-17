@@ -35,7 +35,7 @@ namespace MonoUnit
             {
                 string failureMessage = matcher.GetFailureMessage(inverse);
 
-                throw new ExpectationException(failureMessage);
+                throw new ExpectationException(failureMessage, matcher.ShowStackTrace);
             }
         }
     }

@@ -24,6 +24,11 @@ namespace MonoUnit
                 return String.Format("Expected {0} to equal {1}", actual, expected);
             }
         }
+
+        public override bool ShowStackTrace
+        {
+            get { return false; }
+        }
     }
 }
 
