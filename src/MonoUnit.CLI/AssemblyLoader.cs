@@ -28,6 +28,9 @@ namespace MonoUnit.CLI
                 return;
             }
 
+            // Get absolute path
+            path = Path.GetFullPath(path);
+
             // Load assembly
             Assembly assembly;
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -8,7 +8,7 @@
     <ProjectGuid>{3BF604AC-4A7D-4F6C-BD4E-D559BFFD8A52}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>MonoUnit.CLI</RootNamespace>
-    <AssemblyName>MonoUnit</AssemblyName>
+    <AssemblyName>MonoUnit.Console</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonoUnit\MonoUnit.csproj">
-      <Project>{562285F0-6ED9-42E6-84F6-C108D48E3C91}</Project>
+      <Project>{562285f0-6ed9-42e6-84f6-c108d48e3c91}</Project>
       <Name>MonoUnit</Name>
     </ProjectReference>
   </ItemGroup>
