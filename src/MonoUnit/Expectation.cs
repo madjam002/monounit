@@ -34,6 +34,18 @@ namespace MonoUnit
             return this;
         }
 
+        public Expectation toBeTypeOf(Type expected)
+        {
+            Test(new TypeMatcher(expected));
+
+            return this;
+        }
+
+        public Expectation toBeTypeOf<T>()
+        {
+            return toBeTypeOf(typeof(T));
+        }
+
         public Expectation toThrow<T>()
         {
             Test(new ExceptionMatcher<T>());
