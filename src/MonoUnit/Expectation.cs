@@ -13,11 +13,14 @@ namespace MonoUnit
             this.inverse = false;
         }
 
-        public Expectation not()
+        public Expectation not
         {
-            inverse = true;
+            get
+            {
+                inverse = !inverse;
 
-            return this;
+                return this;
+            }
         }
 
         public Expectation toEqual(object expected)
@@ -56,6 +59,8 @@ namespace MonoUnit
         private void Test(AbstractMatcher matcher)
         {
             bool match = matcher.Match(actual);
+
+            if (inverse) match = !match;
 
             if (!match)
             {
