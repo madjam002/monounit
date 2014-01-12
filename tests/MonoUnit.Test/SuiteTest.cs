@@ -2,46 +2,44 @@ using System;
 
 namespace MonoUnit.Test
 {
+    [Describe("Suite Test")]
     public class SuiteTest : TestCase
     {
-        public SuiteTest()
+        [Describe("Initialisation")]
+        public void initialisation()
         {
-            describe("Initialisation", () => {
+            Suite suite = null;
 
-                Suite suite = null;
-
-                beforeEach(() => {
-                    suite = new Suite("Testing", null, null);
-                });
-
-                it("should initialise suites and specs and should have the right title and parent", () => {
-                    expect(suite.GetSpecs().Length).toEqual(0);
-                    expect(suite.GetSuites().Length).toEqual(0);
-
-                    expect(suite.Title).toEqual("Testing");
-                    expect(suite.Parent).toEqual(null);
-                });
-
+            beforeEach(() => {
+                suite = new Suite("Testing", null, null);
             });
 
-            describe("Add/Get Suites", () => {
+            it("should initialise suites and specs and should have the right title and parent", () => {
+                expect(suite.GetSpecs().Length).toEqual(0);
+                expect(suite.GetSuites().Length).toEqual(0);
 
-                Suite suite = null;
+                expect(suite.Title).toEqual("Testing");
+                expect(suite.Parent).toEqual(null);
+            });
+        }
 
-                beforeEach(() => {
-                    suite = new Suite("Testing", null, null);
-                });
+        [Describe("Add/Get Suites")]
+        public void addGetSuites()
+        {
+            Suite suite = null;
 
-                it("should add a nested suite", () => {
-                    expect(suite.GetSuites().Length).toEqual(0);
+            beforeEach(() => {
+                suite = new Suite("Testing", null, null);
+            });
 
-                    Suite nestedSuite = new Suite("Nested", null, null);
-                    suite.AddSuite(nestedSuite);
+            it("should add a nested suite", () => {
+                expect(suite.GetSuites().Length).toEqual(0);
 
-                    expect(suite.GetSuites()[0]).toEqual(nestedSuite);
-                    expect(nestedSuite.Parent).toEqual(suite);
-                });
+                Suite nestedSuite = new Suite("Nested", null, null);
+                suite.AddSuite(nestedSuite);
 
+                expect(suite.GetSuites()[0]).toEqual(nestedSuite);
+                expect(nestedSuite.Parent).toEqual(suite);
             });
         }
     }

@@ -5,12 +5,22 @@ namespace MonoUnit
 {
     public class TestCase
     {
-        List<Suite> suites;
-        Suite currentSuite;
+        internal List<Suite> suites;
+        internal Suite currentSuite;
 
         public TestCase()
         {
             suites = new List<Suite>();
+
+            object[] attributes = this.GetType().GetCustomAttributes(true);
+            foreach (object attribute in attributes)
+            {
+                if (attribute.GetType() == typeof(Describe))
+                {
+                    ((Describe)attribute).CreateSuite(this, null);
+                    break;
+                }
+            }
         }
 
         public void describe(string title, Action closure)
@@ -60,7 +70,7 @@ namespace MonoUnit
             return new Expectation(closure);
         }
 
-        public Suite[] GetSuites()
+        internal Suite[] GetSuites()
         {
             return suites.ToArray();
         }

@@ -1,8 +1,85 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace MonoUnit
 {
+    public class Describe : Attribute
+    {
+        string title;
+
+        public Describe(string title)
+        {
+            this.title = title;
+        }
+
+        public Describe()
+        {
+            this.title = null;
+        }
+
+        internal void CreateSuite(TestCase testCase, MethodInfo method = null)
+        {
+            Suite previous = testCase.currentSuite;
+
+            string title = this.title;
+            if (title == null)
+            {
+                if (method != null)
+                {
+                    title = method.Name;
+                }
+                else
+                {
+                    title = testCase.GetType().Name;
+                }
+            }
+
+            Action closure = null;
+            if (method != null)
+            {
+                closure = (Action) Delegate.CreateDelegate(typeof(Action), testCase, method);
+            }
+
+            Suite suite = new Suite(title, closure, previous);
+
+            if (testCase.currentSuite == null)
+            {
+                // Root Suite
+                testCase.suites.Add(suite);
+            }
+            else
+            {
+                testCase.currentSuite.AddSuite(suite);
+            }
+
+            if (method == null)
+            {
+                testCase.currentSuite = suite;
+
+                MethodInfo[] methods = testCase.GetType().GetMethods();
+                foreach (MethodInfo childMethod in methods)
+                {
+                    object[] attributes = childMethod.GetCustomAttributes(true);
+                    foreach (object attribute in attributes)
+                    {
+                        if (attribute.GetType() == typeof(Describe))
+                        {
+                            Describe describeAttribute = (Describe)attribute;
+                            describeAttribute.CreateSuite(testCase, childMethod);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                testCase.currentSuite = suite;
+                closure();
+                testCase.currentSuite = previous;
+            }
+        }
+    }
+
     public class Suite
     {
         string title;
