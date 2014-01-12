@@ -27,6 +27,13 @@ namespace MonoUnit
             return this;
         }
 
+        public Expectation toBe(object expected)
+        {
+            Test(new IdentityMatcher(expected));
+
+            return this;
+        }
+
         private void Test(AbstractMatcher matcher)
         {
             bool match = matcher.Match(actual);
