@@ -55,6 +55,11 @@ namespace MonoUnit
             return new Expectation(actual);
         }
 
+        public Expectation expect(Action closure)
+        {
+            return new Expectation(closure);
+        }
+
         public Suite[] GetSuites()
         {
             return suites.ToArray();

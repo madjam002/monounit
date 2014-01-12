@@ -63,8 +63,9 @@ namespace MonoUnit
                 Spec spec = failedSpecs[i];
 
                 Console.BackgroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("#{0} {1}", i + 1, spec.Title);
+                Console.Write("#{0} {1}", i + 1, spec.Title);
                 Console.BackgroundColor = ConsoleColor.Black;
+                Console.WriteLine();
 
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();

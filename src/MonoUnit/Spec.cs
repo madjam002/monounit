@@ -45,6 +45,7 @@ namespace MonoUnit
             catch (Exception ex)
             {
                 exception = ex;
+                ShowStackTrace = true;
                 this.status = SpecStatus.FAILED;
             }
         }

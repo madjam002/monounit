@@ -34,6 +34,13 @@ namespace MonoUnit
             return this;
         }
 
+        public Expectation toThrow<T>()
+        {
+            Test(new ExceptionMatcher<T>());
+
+            return this;
+        }
+
         private void Test(AbstractMatcher matcher)
         {
             bool match = matcher.Match(actual);

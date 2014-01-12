@@ -45,6 +45,7 @@
     <Compile Include="Exception\ExpectationException.cs" />
     <Compile Include="SpecStatus.cs" />
     <Compile Include="Matcher\IdentityMatcher.cs" />
+    <Compile Include="Matcher\ExceptionMatcher.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
