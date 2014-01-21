@@ -1,6 +1,6 @@
 using System;
 
-namespace MonoUnit
+namespace MonoUnit.Matcher
 {
     public class ExceptionMatcher<T> : AbstractMatcher
     {
@@ -17,7 +17,7 @@ namespace MonoUnit
             {
                 ((Action) actual)();
             }
-            catch (Exception exception)
+            catch (System.Exception exception)
             {
                 return exception.GetType() == typeof(T);
             }

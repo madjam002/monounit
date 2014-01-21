@@ -1,3 +1,4 @@
+using MonoUnit.Exception;
 using System;
 
 namespace MonoUnit
@@ -9,7 +10,7 @@ namespace MonoUnit
         Suite suite;
 
         SpecStatus status;
-        Exception exception;
+        System.Exception exception;
         bool showStackTrace = false;
 
         public Spec(string title, Action closure, Suite suite)
@@ -42,7 +43,7 @@ namespace MonoUnit
                 showStackTrace = ex.ShowStackTrace;
                 this.status = SpecStatus.FAILED;
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 exception = ex;
                 ShowStackTrace = true;
@@ -70,7 +71,7 @@ namespace MonoUnit
             get { return status; }
         }
 
-        public Exception Exception
+        public System.Exception Exception
         {
             get { return exception; }
         }

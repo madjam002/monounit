@@ -1,3 +1,4 @@
+using MonoUnit.Reporter;
 using System;
 
 namespace MonoUnit.CLI
@@ -43,7 +44,7 @@ namespace MonoUnit.CLI
 
             AbstractReporter reporter = CreateReporter(reporterName);
 
-            Runner runner = new Runner(reporter);
+            Runner.Runner runner = new Runner.Runner(reporter);
             AssemblyLoader loader = new AssemblyLoader(runner);
 
             foreach (string assemblyPath in inputs)

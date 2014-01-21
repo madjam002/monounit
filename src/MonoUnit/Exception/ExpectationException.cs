@@ -1,8 +1,8 @@
 using System;
 
-namespace MonoUnit
+namespace MonoUnit.Exception
 {
-    public class ExpectationException : Exception
+    public class ExpectationException : System.Exception
     {
         bool showStackTrace;
 

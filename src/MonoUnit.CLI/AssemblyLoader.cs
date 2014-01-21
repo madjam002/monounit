@@ -6,9 +6,9 @@ namespace MonoUnit.CLI
 {
     public class AssemblyLoader
     {
-        Runner runner;
+        Runner.Runner runner;
 
-        public AssemblyLoader(Runner runner)
+        public AssemblyLoader(Runner.Runner runner)
         {
             this.runner = runner;
         }

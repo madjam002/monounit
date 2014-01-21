@@ -1,6 +1,6 @@
 using System;
 
-namespace MonoUnit
+namespace MonoUnit.Matcher
 {
     public abstract class AbstractMatcher
     {

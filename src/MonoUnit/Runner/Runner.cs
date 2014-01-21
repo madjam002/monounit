@@ -1,8 +1,9 @@
+using MonoUnit.Reporter;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace MonoUnit
+namespace MonoUnit.Runner
 {
     public class Runner
     {

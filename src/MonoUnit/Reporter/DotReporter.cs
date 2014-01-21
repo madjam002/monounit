@@ -1,6 +1,6 @@
 using System;
 
-namespace MonoUnit
+namespace MonoUnit.Reporter
 {
     public class DotReporter : AbstractReporter
     {
