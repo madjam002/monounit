@@ -2,7 +2,7 @@ using System;
 
 namespace MonoUnit.Test
 {
-    [Describe("Suite Test")]
+    [Describe("Suite")]
     public class SuiteTest : TestCase
     {
         [Describe("Initialisation")]

@@ -5,14 +5,14 @@ namespace MonoUnit.Matcher
     /// <summary>
     /// Represents an Exception Matcher.
     /// </summary>
-    /// <typeparam name="T">Type of Exception to match.</typeparam>
-    public class ExceptionMatcher<T> : AbstractMatcher
+    public class ExceptionMatcher : AbstractMatcher
     {
         /// <summary>
-        /// Initialises a new instance of the <see cref="ExceptionMatcher{T}"/> class.
+        /// Initialises a new instance of the <see cref="ExceptionMatcher"/> class.
         /// </summary>
-        public ExceptionMatcher()
-            : base(null)
+        /// <param name="expected">Expected Exception Type.</param>
+        public ExceptionMatcher(Type expected)
+            : base(expected)
         {
         }
 
@@ -36,7 +36,7 @@ namespace MonoUnit.Matcher
             }
             catch (System.Exception exception)
             {
-                return exception.GetType() == typeof(T);
+                return exception.GetType() == (Type)this.Expected;
             }
 
             return false;
@@ -45,7 +45,7 @@ namespace MonoUnit.Matcher
         /// <inheritdoc />
         public override string GetFailureMessage(bool inverse)
         {
-            string expectedName = typeof(T).Name;
+            string expectedName = ((Type)this.Expected).Name;
 
             if (inverse)
             {

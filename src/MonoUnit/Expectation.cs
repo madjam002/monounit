@@ -53,7 +53,7 @@ namespace MonoUnit
 
         public Expectation toThrow<T>()
         {
-            Test(new ExceptionMatcher<T>());
+            Test(new ExceptionMatcher(typeof(T)));
 
             return this;
         }
