@@ -2,35 +2,47 @@ using System;
 
 namespace MonoUnit.Matcher
 {
+    /// <summary>
+    /// Represents a Type Matcher.
+    /// </summary>
     public class TypeMatcher : AbstractMatcher
     {
-        public TypeMatcher(Type expected) : base(expected) {}
-
-        public override bool Match(object actual)
+        /// <summary>
+        /// Initialises a new instance of the <see cref="TypeMatcher"/> class.
+        /// </summary>
+        /// <param name="expected">Expected value.</param>
+        public TypeMatcher(Type expected)
+            : base(expected)
         {
-            this.actual = actual;
-
-            return ((Type)expected).IsInstanceOfType(actual);
         }
 
-        public override string GetFailureMessage(bool inverse)
-        {
-            string expectedName = ((Type)expected).Name;
-
-            if (inverse)
-            {
-                return String.Format("Expected {0} not to be type of {1}", actual, expectedName);
-            }
-            else
-            {
-                return String.Format("Expected {0} to be type of {1}", actual, expectedName);
-            }
-        }
-
+        /// <inheritdoc />
         public override bool ShowStackTrace
         {
             get { return false; }
         }
+
+        /// <inheritdoc />
+        public override bool Match(object actual)
+        {
+            this.Actual = actual;
+
+            return ((Type)this.Expected).IsInstanceOfType(actual);
+        }
+
+        /// <inheritdoc />
+        public override string GetFailureMessage(bool inverse)
+        {
+            string expectedName = ((Type)this.Expected).Name;
+
+            if (inverse)
+            {
+                return string.Format("Expected {0} not to be type of {1}", this.Actual, expectedName);
+            }
+            else
+            {
+                return string.Format("Expected {0} to be type of {1}", this.Actual, expectedName);
+            }
+        }
     }
 }
-

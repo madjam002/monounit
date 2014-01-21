@@ -2,10 +2,27 @@ using System;
 
 namespace MonoUnit.Matcher
 {
+    /// <summary>
+    /// Represents an Exception Matcher.
+    /// </summary>
+    /// <typeparam name="T">Type of Exception to match.</typeparam>
     public class ExceptionMatcher<T> : AbstractMatcher
     {
-        public ExceptionMatcher() : base(null) {}
+        /// <summary>
+        /// Initialises a new instance of the <see cref="ExceptionMatcher{T}"/> class.
+        /// </summary>
+        public ExceptionMatcher()
+            : base(null)
+        {
+        }
 
+        /// <inheritdoc />
+        public override bool ShowStackTrace
+        {
+            get { return false; }
+        }
+
+        /// <inheritdoc />
         public override bool Match(object actual)
         {
             if (actual.GetType() != typeof(Action))
@@ -15,7 +32,7 @@ namespace MonoUnit.Matcher
 
             try
             {
-                ((Action) actual)();
+                ((Action)actual)();
             }
             catch (System.Exception exception)
             {
@@ -25,24 +42,19 @@ namespace MonoUnit.Matcher
             return false;
         }
 
+        /// <inheritdoc />
         public override string GetFailureMessage(bool inverse)
         {
             string expectedName = typeof(T).Name;
 
             if (inverse)
             {
-                return String.Format("Expected {0} to not have been thrown", expectedName);
+                return string.Format("Expected {0} to not have been thrown", expectedName);
             }
             else
             {
-                return String.Format("Expected {0} to have been thrown", expectedName);
+                return string.Format("Expected {0} to have been thrown", expectedName);
             }
-        }
-
-        public override bool ShowStackTrace
-        {
-            get { return false; }
         }
     }
 }
-
