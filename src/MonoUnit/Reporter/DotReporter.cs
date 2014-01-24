@@ -2,33 +2,39 @@ using System;
 
 namespace MonoUnit.Reporter
 {
+    /// <summary>
+    /// Represents a Dot Reporter.
+    /// </summary>
     public class DotReporter : AbstractReporter
     {
-        static int maxPerLine = 60;
+        private static int maxPerLine = 60;
 
-        int lineLength = 0;
+        private int lineLength = 0;
 
+        /// <inheritdoc />
         public override void BeforeRun()
         {
             Console.WriteLine();
         }
 
+        /// <inheritdoc />
         public override void BeforeSpec(Spec spec)
         {
             base.BeforeSpec(spec);
 
-            if (lineLength == maxPerLine)
+            if (this.lineLength == maxPerLine)
             {
                 Console.WriteLine();
-                lineLength = 0;
+                this.lineLength = 0;
             }
         }
 
+        /// <inheritdoc />
         public override void AfterSpec(Spec spec)
         {
             base.AfterSpec(spec);
 
-            lineLength++;
+            this.lineLength++;
 
             switch (spec.Status)
             {
@@ -49,6 +55,7 @@ namespace MonoUnit.Reporter
             }
         }
 
+        /// <inheritdoc />
         public override void AfterRun(long timeTaken)
         {
             Console.WriteLine();
@@ -56,11 +63,11 @@ namespace MonoUnit.Reporter
 
             Console.WriteLine("Time: {0} ms", timeTaken);
 
-            if (failedSpecs.Count > 0)
+            if (this.FailedSpecs.Length > 0)
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
             }
-            else if (incompleteSpecs.Count > 0)
+            else if (this.IncompleteSpecs.Length > 0)
             {
                 Console.BackgroundColor = ConsoleColor.Blue;
             }
@@ -69,16 +76,15 @@ namespace MonoUnit.Reporter
                 Console.ForegroundColor = ConsoleColor.Green;
             }
 
-            Console.Write("{0} tests, {1} failures, {2} incomplete", specCount, failedSpecs.Count, incompleteSpecs.Count);
+            Console.Write("{0} tests, {1} failures, {2} incomplete", this.SpecCount, this.FailedSpecs.Length, this.IncompleteSpecs.Length);
 
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
 
-            DisplayReport();
+            this.DisplayReport();
 
             Console.WriteLine();
         }
     }
 }
-
